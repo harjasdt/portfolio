@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
 from rest_framework.response import Response
 # Create your views here.
-
+from rest_framework.permissions import AllowAny
 
 
 import smtplib
@@ -13,13 +13,13 @@ import pandas as pd
 
 import urllib
 
-
-@api_view(['GET'])
+@api_view()
+@permission_classes([AllowAny])
 def all(request):
     mail=str(request.query_params['mail'])
     apppass=str(request.query_params['apppass'])
     name=str(request.query_params['name'])
-    sheet_id=str(request.query_params['id'])
+    sheet_id=str(request.query_params['sheet_id'])
     sheet_name=str(request.query_params['sname'])
 
     res=send_email(mail,apppass,name,sheet_id,sheet_name)
