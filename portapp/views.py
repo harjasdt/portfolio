@@ -13,8 +13,7 @@ import pandas as pd
 
 import urllib
 
-@api_view()
-@permission_classes([AllowAny])
+@api_view(['GET'])
 def all(request):
     mail=request.query_params['mail']
     apppass=request.query_params['apppass']
