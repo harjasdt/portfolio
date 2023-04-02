@@ -24,7 +24,7 @@ def all(request):
 
     res=send_email(mail,apppass,name,sheet_id,sheet_name)
     #file(sheet_id,sheet_name)
-    return Response({"STATUS":"done"})
+    return Response({"STATUS":res})
 
 
 
