@@ -146,9 +146,16 @@
       }
       
       .field-label {
-        padding: 0;
-        margin: 0;
+        padding: 5px;
+        margin: 5px;
         clear: both;
+      }
+      strong{
+        color:red;
+      }
+      .yellow{
+        color:yellow;
+
       }
       
       .field-items	{
@@ -195,9 +202,11 @@
 
   <div class="method"><a name="useNamemailapppassidsnameGet"></a>
     <div class="method-path">
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /use/{name}&amp;{mail}&amp;{apppass}&amp;{id}&amp;{sname}</code></pre></div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /<span class="yellow">multiemail_static</span>/{name}&amp;{mail}&amp;{apppass}&amp;{id}&amp;{sname}</code></pre></div>
    
     <div class="method-notes"></div>
+    <h3 class="field-label">In Excel Sheet MESSAGE and SUBJECT columns can <strong> NOT </strong> have dynamic data on as {A0} , {A1}.... </h3>
+
 
     <h3 class="field-label">Path parameters</h3>
     <div class="field-items">
@@ -222,9 +231,42 @@
     <!--Todo: process Response Object and its headers, schema, examples -->
 
   </div> <!-- method -->
+  <br>
+
+  <div class="method"><a name="useNamemailapppassidsnameGet"></a>
+    <div class="method-path">
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /<span class="yellow">multiemail_dynamic</span>/{name}&amp;{mail}&amp;{apppass}&amp;{id}&amp;{sname}</code></pre></div>
+   
+    <div class="method-notes"></div>
+    <h3 class="field-label">Excel Sheet should have Column Headings as A0, A1, A2.... and MESSAGE and SUBJECT columns can have dynamic data as {A0} , {A1}.... </h3>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">name (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Senders name </div>      <div class="param">mail (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Senders Email id </div>      <div class="param">apppass (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Gmail App Key (generated from gmail settings) </div>      <div class="param">id (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Google docs ID (obtained from share to all link) </div>      <div class="param">sname (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Sheet name in Google docs </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+  </div> <!-- method -->
+
   <hr/>
 <h2>Helper Notes</h2>
-  <div class="app-desc"> <a href="https://devanswe.rs/create-application-specific-password-gmail/">Generte App Key !</a></div>
+  <div class="app-desc"> <a href="https://devanswe.rs/create-application-specific-password-gmail/">Generate App Key !</a></div>
   <div class="app-desc"> <a href="https://docs.meiro.io/books/meiro-integrations/page/where-can-i-find-the-sheet-id-of-google-spreadsheet-file">Get Google Docs ID!</a></div>
 
 
