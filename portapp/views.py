@@ -16,13 +16,13 @@ import urllib
 @api_view()
 @permission_classes([AllowAny])
 def all(request):
-    # mail=str(request.query_params['mail'])
-    # apppass=str(request.query_params['apppass'])
-    # name=str(request.query_params['name'])
-    # sheet_id=str(request.query_params['sheet_id'])
-    # sheet_name=str(request.query_params['sname'])
+    mail=request.query_params['mail']
+    apppass=request.query_params['apppass']
+    name=request.query_params['name']
+    sheet_id=request.query_params['id']
+    sheet_name=request.query_params['sname']
 
-    # res=send_email(mail,apppass,name,sheet_id,sheet_name)
+    res=send_email(mail,apppass,name,sheet_id,sheet_name)
     #file(sheet_id,sheet_name)
     return Response({"STATUS":"done"})
 
