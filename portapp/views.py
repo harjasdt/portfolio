@@ -9,6 +9,18 @@ from rest_framework.permissions import AllowAny
 import smtplib
 import time
 import pandas as pd
+import datetime 
+from csv import writer
+
+@api_view(['GET'])
+def test(request):
+    x=request.query_params['x']
+
+    with open('event.csv', 'a') as f:
+        f.write(f'last update at {datetime.datetime.now()} ans {x} \n')
+
+    return Response("ss")
+
 
 @api_view(['GET'])
 def static(request):

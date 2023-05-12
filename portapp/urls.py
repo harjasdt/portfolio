@@ -8,6 +8,7 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
+    path('test/',views.test,name='test'),
     path('multiemail_static/',views.static,name='home'),
     path('multiemail_dynamic/',views.dynamic,name='d'),
     path('', TemplateView.as_view(
