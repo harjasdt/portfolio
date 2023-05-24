@@ -28,6 +28,7 @@ def getting(request):
     
     #return render(request,'graph.html',context)
     return JsonResponse({"d":list(d.values())})
+import math
 @api_view(['GET'])
 def test(request):
     # time=request.query_params['time']
@@ -36,7 +37,7 @@ def test(request):
 
     time = int(currentDateAndTime.strftime("%M%S"))
 
-    data=QUESTION(q1=time,q2=temp)
+    data=QUESTION(time=time,temp=temp)
     data.save()
     # with open('event.csv', 'a') as f:
     #     f.write(f'last update at {datetime.datetime.now()} ans {x} \n')

@@ -38,11 +38,11 @@
                     {
                        
                         
-                        x_axis.push(response.d[key].q1);
+                        x_axis.push(response.d[key].time);
                         $("#disp").append(x_axis);
                         {% comment %} console.log(x_axis); {% endcomment %}
 
-                        y_axis.push(response.d[key].q2);
+                        y_axis.push(response.d[key].temp);
                         $("#disp").append(y_axis);
                         {% comment %} console.log(y_axis); {% endcomment %}
 
