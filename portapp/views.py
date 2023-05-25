@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.response import Response
@@ -13,6 +13,11 @@ from datetime import datetime
 from csv import writer
 from portapp.models import QUESTION
 from django.http import JsonResponse
+
+def team(request):
+    QUESTION.objects.all().delete()
+
+    return redirect('goodhome')
 
 def home(request):
 
