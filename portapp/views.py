@@ -14,25 +14,52 @@ from csv import writer
 from portapp.models import QUESTION
 from django.http import JsonResponse
 
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+import joblib
+model_filename = "naive_bayes_model.sav"
+model = joblib.load(model_filename)
+
+dict={0: 'apple',
+ 1: 'banana',
+ 2: 'blackgram',
+ 3: 'chickpea',
+ 4: 'coconut',
+ 5: 'coffee',
+ 6: 'cotton',
+ 7: 'grapes',
+ 8: 'jute',
+ 9: 'kidneybeans',
+ 10: 'lentil',
+ 11: 'maize',
+ 12: 'mango',
+ 13: 'mothbeans',
+ 14: 'mungbean',
+ 15: 'muskmelon',
+ 16: 'orange',
+ 17: ' papaya',
+ 18: 'pigeonpeas',
+ 19: 'pomegranate',
+ 20: 'rice',
+ 21: 'watermelon'}
+
+def home(request):
+    
+
+    return render(request,'final/home.html')
+
 def team(request):
     QUESTION.objects.all().delete()
 
     return redirect('goodhome')
 
-def home(request):
-
-    return render(request,'graph.html')
-    # return JsonResponse({"d":list(d.values())})
-
 
 def goodhome(request):
 
     return render(request,'acchagraph.html')
-def getting(request):
-    d=QUESTION.objects.all()
-    
-    #return render(request,'graph.html',context)
-    return JsonResponse({"d":list(d.values())})
+
 import math
 @api_view(['GET'])
 def test(request):

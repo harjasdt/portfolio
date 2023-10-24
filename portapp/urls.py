@@ -8,10 +8,15 @@ from django.views.generic import TemplateView
 
 
 urlpatterns = [
+    path('',views.home,name='home'),
+
+    
+
+
     path('clear/',views.team,name='team'),
-    path('home/',views.home,name='home'),
+
     path('goodhome/',views.goodhome,name='goodhome'),
-     path('getting/',views.getting,name='getting'),
+    
 
     path('test/',views.test,name='test'),
     # path('multiemail_static/',views.static,name='home'),
