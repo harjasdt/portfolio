@@ -4,3 +4,6 @@ from django.db import models
 class QUESTION(models.Model):
     temp=models.TextField(max_length=300,blank=False)
     time=models.IntegerField(blank=False,default=9)
+
+    def __str__(self):
+        return self.temp
