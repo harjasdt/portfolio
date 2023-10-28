@@ -32,13 +32,13 @@ ALLOWED_HOSTS = ['*',]
 # Application definition
 
 INSTALLED_APPS = [
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'portapp',
     'rest_framework_swagger',
     'rest_framework',
@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 ROOT_URLCONF = 'portfolio.urls'
 
 TEMPLATES = [
