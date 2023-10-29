@@ -10,5 +10,5 @@ class QUESTION(models.Model):
     k=models.FloatField(default=-1,blank=False)
     time=models.IntegerField(blank=False,default=9)
 
-    def __str__(self):
-        return self.temp
+    # def __str__(self):
+    #     return self.temp

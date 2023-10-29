@@ -9,13 +9,10 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('',views.home,name='home'),
+    path('getting/',views.getting,name='getting'),
+    path('clear/',views.clear,name='clear'),
 
-    
-
-
-    path('clear/',views.team,name='team'),
-
-    path('goodhome/',views.goodhome,name='goodhome'),
+    # path('goodhome/',views.goodhome,name='goodhome'),
     
 
     path('test/',views.test,name='test'),

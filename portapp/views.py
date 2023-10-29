@@ -46,19 +46,36 @@ from django.http import JsonResponse
 #  21: 'watermelon'}
 
 def home(request):
-    
+    data=QUESTION.objects.last()
+    print(data)
+    context={"data":data}
 
-    return render(request,'final/home.html')
+    return render(request,'final/home.html',context)
 
-def team(request):
+def clear(request):
     QUESTION.objects.all().delete()
 
-    return redirect('goodhome')
+    return redirect('/')
+# def getting(request):
+#     data=QUESTION.objects.last()
+#     context={"data":data}
+#     return redirect('/',context)
 
 
-def goodhome(request):
+import math
+@api_view(['GET'])
+def getting(request):
+    data=QUESTION.objects.last()
+    context={
+        "temp":data.temp,
+        "ph":data.ph,
+        "mos":data.mos,
+        "n":data.n,
+        "p":data.p,
+        "k":data.k
+    }
 
-    return render(request,'acchagraph.html')
+    return Response(context)
 
 import math
 @api_view(['GET'])
