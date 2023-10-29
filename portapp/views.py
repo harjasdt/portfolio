@@ -65,11 +65,16 @@ import math
 def test(request):
     # time=request.query_params['time']
     temp=request.query_params['temp']
+    ph=request.query_params['ph']
+    mos=request.query_params['mos']
+    n=request.query_params['n']
+    p=request.query_params['p']
+    k=request.query_params['k']
     currentDateAndTime = datetime.now()
 
     time = int(currentDateAndTime.strftime("%M%S"))
 
-    data=QUESTION(time=time,temp=temp)
+    data=QUESTION(time=time,temp=temp,ph=ph,mos=mos,n=n,p=p,k=k)
     data.save()
     # with open('event.csv', 'a') as f:
     #     f.write(f'last update at {datetime.datetime.now()} ans {x} \n')
