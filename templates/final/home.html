@@ -144,8 +144,8 @@
     <script>
       setInterval(() => {
         $.ajax({ 
-          url: 'http://127.0.0.1:8000/getting/', 
-          {% comment %} url: 'http://16.16.215.208/getting/',  {% endcomment %}
+          {% comment %} url: 'http://127.0.0.1:8000/getting/',  {% endcomment %}
+          url: 'http://16.16.215.208/getting/', 
           method: 'GET', 
           success: function(response) { 
               {% comment %} const parsedData = JSON.parse(response);  {% endcomment %}
