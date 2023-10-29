@@ -11,6 +11,9 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('getting/',views.getting,name='getting'),
     path('clear/',views.clear,name='clear'),
+    path('history/',views.history,name='history'),
+    path('predhistory/',views.predhistory,name='predhistory'),
+
 
     # path('goodhome/',views.goodhome,name='goodhome'),
     

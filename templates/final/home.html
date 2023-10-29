@@ -13,9 +13,47 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <a class="navbar-brand px-5" href="#">Team-58</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class=" collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 px-5">
+            <li class="nav-item">
+              <a class="nav-link active " aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/history">History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">About Us</a>
+            </li>
+            
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <div class="container py-3">
+      <div class="row">
+        <div class="col">
+          <a href='/predhistory'><button type="button" class="btn btn-success">Predict Crop</button><a>
+        </div>
 
-    <div class="container">
+
+        <div class="col">
+            
+        </div>
+
+      </div>
+      
+    </div>
+
+
+    <div class="container py-3">
       <div class="row">
         <div class="col">
             <div class="card" >
@@ -106,8 +144,8 @@
     <script>
       setInterval(() => {
         $.ajax({ 
-          {% comment %} url: 'http://127.0.0.1:8000/getting/',  {% endcomment %}
-          url: 'http://16.16.215.208/getting/', 
+          url: 'http://127.0.0.1:8000/getting/', 
+          {% comment %} url: 'http://16.16.215.208/getting/',  {% endcomment %}
           method: 'GET', 
           success: function(response) { 
               {% comment %} const parsedData = JSON.parse(response);  {% endcomment %}

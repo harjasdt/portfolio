@@ -12,3 +12,7 @@ class QUESTION(models.Model):
 
     # def __str__(self):
     #     return self.temp
+
+class HISTORY(models.Model):
+    crop=models.CharField(max_length=100)
+    time=models.CharField(max_length=100,blank=False,default=9)

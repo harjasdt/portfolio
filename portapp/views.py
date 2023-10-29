@@ -11,39 +11,66 @@ import time
 import pandas as pd
 from datetime import datetime
 from csv import writer
-from portapp.models import QUESTION
+from portapp.models import QUESTION,HISTORY
 from django.http import JsonResponse
 
 
-# from sklearn.model_selection import train_test_split
-# from sklearn.linear_model import LogisticRegression
-# from sklearn.metrics import accuracy_score
-# import joblib
-# model_filename = "naive_bayes_model.sav"
-# model = joblib.load(model_filename)
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+import joblib
+import numpy as np
+model_filename = "naive_bayes_model.sav"
+model = joblib.load(model_filename)
 
-# dict={0: 'apple',
-#  1: 'banana',
-#  2: 'blackgram',
-#  3: 'chickpea',
-#  4: 'coconut',
-#  5: 'coffee',
-#  6: 'cotton',
-#  7: 'grapes',
-#  8: 'jute',
-#  9: 'kidneybeans',
-#  10: 'lentil',
-#  11: 'maize',
-#  12: 'mango',
-#  13: 'mothbeans',
-#  14: 'mungbean',
-#  15: 'muskmelon',
-#  16: 'orange',
-#  17: ' papaya',
-#  18: 'pigeonpeas',
-#  19: 'pomegranate',
-#  20: 'rice',
-#  21: 'watermelon'}
+dict={0: 'apple',
+ 1: 'banana',
+ 2: 'blackgram',
+ 3: 'chickpea',
+ 4: 'coconut',
+ 5: 'coffee',
+ 6: 'cotton',
+ 7: 'grapes',
+ 8: 'jute',
+ 9: 'kidneybeans',
+ 10: 'lentil',
+ 11: 'maize',
+ 12: 'mango',
+ 13: 'mothbeans',
+ 14: 'mungbean',
+ 15: 'muskmelon',
+ 16: 'orange',
+ 17: ' papaya',
+ 18: 'pigeonpeas',
+ 19: 'pomegranate',
+ 20: 'rice',
+ 21: 'watermelon'}
+
+
+def help():
+    data=QUESTION.objects.last()
+    x=np.array([[data.temp, data.ph, data.mos, data.n, data.p, data.k]])
+    ans=model.predict(x)
+    currentDateAndTime = datetime.now()
+    time = currentDateAndTime.strftime("%h:%m")
+    data=HISTORY(time=currentDateAndTime,crop=dict[int(ans)])
+    data.save()
+
+def history(request):
+    # help()
+    data=HISTORY.objects.all().order_by('-time').values()
+    context={
+        "data":data
+    }
+    return render(request,'final/history.html',context)
+
+def predhistory(request):
+    help()
+    data=HISTORY.objects.all().order_by('-time').values()
+    context={
+        "data":data
+    }
+    return render(request,'final/history.html',context)
 
 def home(request):
     data=QUESTION.objects.last()
@@ -56,10 +83,7 @@ def clear(request):
     QUESTION.objects.all().delete()
 
     return redirect('/')
-# def getting(request):
-#     data=QUESTION.objects.last()
-#     context={"data":data}
-#     return redirect('/',context)
+
 
 
 import math
