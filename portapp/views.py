@@ -127,22 +127,22 @@ def test(request):
 # ----------------------------------------------------------------------------------------------------------------------
 
 def securehome(request):
-    temp=TEMP.objects.last()
     data=DOOR.objects.last()
     active=ACTIVE.objects.last()
     context={"data":data,
-             "active":active,
-             "temp":temp}
+             "active":active}
 
     return render(request,'safe.html',context)
 
 @api_view(['GET'])
 def doorstatus(request):
+    temp=TEMP.objects.last()
     data=DOOR.objects.last()
     context={
         "d1":data.d1,
         "d2":data.d2,
-        "time":data.time
+        "time":data.time,
+        "temp":temp.temp
     }
 
     return Response(context)
