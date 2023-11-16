@@ -36,12 +36,18 @@
         </div>
       </div>
     </nav>
-    
+
     <div class="container py-3">
       <div class="row">
+        {% if active.active == 1 %}
         <div class="col">
-          <a href='/'><button type="button" class="btn btn-success">Activate Protection</button><a>
+          <a href='/changeactive'><button type="button" class="btn btn-success">Deactivate Protection</button><a>
         </div>
+        {% else %}
+        <div class="col">
+            <a href='/changeactive'><button type="button" class="btn btn-danger">Activate Protection</button><a>
+        </div>
+        {% endif %}
 
 
         <div class="col">
@@ -68,7 +74,7 @@
         <div class="col">
               <div class="card" id="card2">
                 <div class="card-body">
-                  <h1 class="card-title">Door 1</h1>
+                  <h1 class="card-title">Door 2</h1>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="d2">-</p></h6>
                 </div>
               </div>

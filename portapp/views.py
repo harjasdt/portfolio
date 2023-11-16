@@ -127,9 +127,10 @@ def test(request):
 # ----------------------------------------------------------------------------------------------------------------------
 
 def securehome(request):
-    data=QUESTION.objects.last()
-    print(data)
-    context={"data":data}
+    data=DOOR.objects.last()
+    active=ACTIVE.objects.last()
+    context={"data":data,
+             "active":active}
 
     return render(request,'safe.html',context)
 
@@ -189,6 +190,17 @@ def reqactive(request):
     }
 
     return Response(context)
+
+def changeactive(request):
+    data=ACTIVE.objects.last()
+    if(data.active == 1):
+        data.active=0
+    else:
+        data.active=1
+
+    data.save()
+    
+    return redirect ("/security")
 # @api_view(['GET'])
 # def static(request):
 #     mail=request.query_params['mail']

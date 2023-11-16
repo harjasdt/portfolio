@@ -31,6 +31,7 @@ urlpatterns = [
     path('updatestatus/',views.updatestatus,name='safesafe'),
     path('newstatus/',views.newstatus,name='newstaut'),
     path('reqactive/',views.reqactive,name='activestate'),
+    path('changeactive/',views.changeactive,name='change'),
 
     
     ]
