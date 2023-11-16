@@ -33,6 +33,7 @@ urlpatterns = [
     path('reqactive/',views.reqactive,name='activestate'),
     path('changeactive/',views.changeactive,name='change'),
     path('failhistory/',views.failhistory,name='failhistory'),
+    path('sendtemp/',views.sendtemp,name='temp'),
 
     
     ]

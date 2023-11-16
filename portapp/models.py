@@ -32,3 +32,7 @@ class ACTIVE(models.Model):
     active=models.IntegerField(default=0,blank=False)
     activatetime=models.CharField(max_length=100,blank=False,default=9)
     
+
+class TEMP(models.Model):
+    temp=models.CharField(max_length=100,blank=False,default=9)
+    activatetime=models.CharField(max_length=100,blank=False,default=9)

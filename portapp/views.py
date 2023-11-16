@@ -11,7 +11,7 @@ import time
 import pandas as pd
 from datetime import datetime
 from csv import writer
-from portapp.models import QUESTION,HISTORY,DOOR,DOORFAIL,ACTIVE
+from portapp.models import QUESTION,HISTORY,DOOR,DOORFAIL,ACTIVE,TEMP
 from django.http import JsonResponse
 
 
@@ -127,10 +127,12 @@ def test(request):
 # ----------------------------------------------------------------------------------------------------------------------
 
 def securehome(request):
+    temp=TEMP.objects.last()
     data=DOOR.objects.last()
     active=ACTIVE.objects.last()
     context={"data":data,
-             "active":active}
+             "active":active,
+             "temp":temp}
 
     return render(request,'safe.html',context)
 
@@ -208,6 +210,20 @@ def failhistory(request):
         "data":data
     }
     return render(request,'failhistory.html',context)
+
+@api_view(['GET'])
+def sendtemp(request):
+    # time=request.query_params['time']
+    temp=request.query_params['temp']
+    currentDateAndTime = datetime.now()
+    time = str(currentDateAndTime.strftime("%H:%M:%S"))
+    lastdata=TEMP.objects.last()
+
+    lastdata.activatetime=time
+    lastdata.temp=temp
+
+    lastdata.save()
+    return Response("Internal Temp Updated")
 # @api_view(['GET'])
 # def static(request):
 #     mail=request.query_params['mail']
