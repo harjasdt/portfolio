@@ -90,8 +90,8 @@
     <script>
       setInterval(() => {
         $.ajax({ 
-          url: 'http://127.0.0.1:8000/doorstatus/', 
-          {% comment %} url: 'http://16.16.215.208/doorstatus/',  {% endcomment %}
+          {% comment %} url: 'http://127.0.0.1:8000/doorstatus/',  {% endcomment %}
+          url: 'http://13.53.182.41/doorstatus/', 
           method: 'GET', 
           success: function(response) { 
               {% comment %} const parsedData = JSON.parse(response);  {% endcomment %}
