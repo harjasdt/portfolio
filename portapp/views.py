@@ -147,8 +147,8 @@ def doorstatus(request):
 @api_view(['GET'])
 def updatestatus(request):
     # time=request.query_params['time']
-    d1=request.query_params['d1']
-    d2=request.query_params['d2']
+    d1=int(request.query_params['d1'])
+    d2=int(request.query_params['d2'])
     currentDateAndTime = datetime.now()
     time = str(currentDateAndTime.strftime("%H:%M:%S"))
     lastdata=DOOR.objects.last()
@@ -166,8 +166,8 @@ def updatestatus(request):
 @api_view(['GET'])
 def newstatus(request):
     # time=request.query_params['time']
-    d1=request.query_params['d1']
-    d2=request.query_params['d2']
+    d1=int(request.query_params['d1'])
+    d2=int(request.query_params['d2'])
     currentDateAndTime = datetime.now()
     time = int(currentDateAndTime.strftime("%M%S"))
 
