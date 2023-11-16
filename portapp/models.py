@@ -8,7 +8,7 @@ class QUESTION(models.Model):
     n=models.FloatField(default=-1,blank=False)
     p=models.FloatField(default=-1,blank=False)
     k=models.FloatField(default=-1,blank=False)
-    time=models.IntegerField(blank=False,default=9)
+    time=models.CharField(max_length=100,blank=False,default=9)
 
     # def __str__(self):
     #     return self.temp
@@ -16,3 +16,19 @@ class QUESTION(models.Model):
 class HISTORY(models.Model):
     crop=models.CharField(max_length=100)
     time=models.CharField(max_length=100,blank=False,default=9)
+
+class DOOR(models.Model):
+    d1=models.IntegerField(default=-1,blank=False)
+    d2=models.IntegerField(default=-1,blank=False)
+    time=models.CharField(max_length=100,blank=False,default=9)
+
+class DOORFAIL(models.Model):
+    d1=models.IntegerField(default=-1,blank=False)
+    d2=models.IntegerField(default=-1,blank=False)
+    time=models.CharField(max_length=100,blank=False,default=9)
+    
+
+class ACTIVE(models.Model):
+    active=models.IntegerField(default=0,blank=False)
+    activatetime=models.CharField(max_length=100,blank=False,default=9)
+    

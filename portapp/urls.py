@@ -26,5 +26,11 @@ urlpatterns = [
     #     extra_context={'schema_url':'api_schema'}
     #     ), name='swagger-ui'),
 
+    path('security/',views.securehome,name='securehome'),
+    path('doorstatus/',views.doorstatus,name='doorstatus'),
+    path('updatestatus/',views.updatestatus,name='safesafe'),
+    path('newstatus/',views.newstatus,name='newstaut'),
+    path('reqactive/',views.reqactive,name='activestate'),
+
     
     ]

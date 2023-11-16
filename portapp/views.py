@@ -11,7 +11,7 @@ import time
 import pandas as pd
 from datetime import datetime
 from csv import writer
-from portapp.models import QUESTION,HISTORY
+from portapp.models import QUESTION,HISTORY,DOOR,DOORFAIL,ACTIVE
 from django.http import JsonResponse
 
 
@@ -123,6 +123,72 @@ def test(request):
     return Response("temp received")
 
 
+
+# ----------------------------------------------------------------------------------------------------------------------
+
+def securehome(request):
+    data=QUESTION.objects.last()
+    print(data)
+    context={"data":data}
+
+    return render(request,'safe.html',context)
+
+@api_view(['GET'])
+def doorstatus(request):
+    data=DOOR.objects.last()
+    context={
+        "d1":data.d1,
+        "d2":data.d2,
+        "time":data.time
+    }
+
+    return Response(context)
+
+@api_view(['GET'])
+def updatestatus(request):
+    # time=request.query_params['time']
+    d1=request.query_params['d1']
+    d2=request.query_params['d2']
+    currentDateAndTime = datetime.now()
+    time = str(currentDateAndTime.strftime("%H:%M:%S"))
+    lastdata=DOOR.objects.last()
+
+    lastdata.time=time
+    lastdata.d1=d1
+    lastdata.d2=d2
+
+    lastdata.save()
+    # with open('event.csv', 'a') as f:
+    #     f.write(f'last update at {datetime.datetime.now()} ans {x} \n')
+
+    return Response("Existing Status Updated")
+
+@api_view(['GET'])
+def newstatus(request):
+    # time=request.query_params['time']
+    d1=request.query_params['d1']
+    d2=request.query_params['d2']
+    currentDateAndTime = datetime.now()
+    time = int(currentDateAndTime.strftime("%M%S"))
+
+    data=DOORFAIL(time=time,d1=d1,d2=d2)
+    
+
+    data.save()
+    # with open('event.csv', 'a') as f:
+    #     f.write(f'last update at {datetime.datetime.now()} ans {x} \n')
+
+    return Response("NEW FAIL DATA SAVED")
+
+
+@api_view(['GET'])
+def reqactive(request):
+    data=ACTIVE.objects.last()
+    context={
+        "active":data.active
+    }
+
+    return Response(context)
 # @api_view(['GET'])
 # def static(request):
 #     mail=request.query_params['mail']
