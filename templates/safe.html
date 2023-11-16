@@ -41,30 +41,29 @@
     </nav>
 
     <div class="container py-3">
-      <div class="row">
-        {% if active.active == 1 %}
-        <div class="col">
-          <a href='/changeactive'><button type="button" class="btn btn-success">Deactivate Protection</button><a>
-        </div>
-        {% else %}
-        <div class="col">
-            <a href='/changeactive'><button type="button" class="btn btn-danger">Activate Protection</button><a>
-        </div>
-        {% endif %}
+        <div class="row">
+            {% if active.active == 1 %}
+            <div class="col">
+              <a href='/changeactive'><button type="button" class="btn btn-success">Deactivate Protection</button><a>
+            </div>
+            {% else %}
+            <div class="col">
+                <a href='/changeactive'><button type="button" class="btn btn-danger">Activate Protection</button><a>
+            </div>
+            {% endif %}
 
 
-        <div class="col">
-            <h2><p>Last Uppdated At:-</p></strong><p id="time">{{data.time}}</p></strong></h2>
-            
-        </div>
+            <div class="col">
+                <h2><p>Last Uppdated At:-</p></strong><p id="time">{{data.time}}</p></strong></h2>
 
-        <div class="col">
-            <h2><p>Internal Temprature:-</p></strong><p id="temp">{{temp.temp}}</p></strong></h2>
-            <h2><p>Last Uppdated At:-</p></strong><p id="temptime">{{temp.time}}</p></strong></h2>
-            
-        </div>
+            </div>
 
-      </div>
+            <div class="col">
+                <h2><p>Internal Temprature:-</p></strong><p id="temp"></p></strong></h2>
+
+            </div>
+
+        </div>
       
     </div>
 
@@ -123,6 +122,7 @@
               document.getElementById("d1").innerHTML=response["d1"];
               document.getElementById("d2").innerHTML=response["d2"];
               document.getElementById("time").innerHTML=response["time"];
+              document.getElementById("temp").innerHTML=response["temp"];
               if(response["d1"] == 1){
                 document.getElementById("card1").classList.add("open");
                 document.getElementById("card1").classList.remove("close");
