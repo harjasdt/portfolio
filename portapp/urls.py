@@ -32,6 +32,7 @@ urlpatterns = [
     path('newstatus/',views.newstatus,name='newstaut'),
     path('reqactive/',views.reqactive,name='activestate'),
     path('changeactive/',views.changeactive,name='change'),
+    path('failhistory/',views.failhistory,name='failhistory'),
 
     
     ]

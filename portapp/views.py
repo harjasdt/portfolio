@@ -170,7 +170,7 @@ def newstatus(request):
     d1=int(request.query_params['d1'])
     d2=int(request.query_params['d2'])
     currentDateAndTime = datetime.now()
-    time = int(currentDateAndTime.strftime("%M%S"))
+    time = str(currentDateAndTime.strftime("%H:%M:%S"))
 
     data=DOORFAIL(time=time,d1=d1,d2=d2)
     
@@ -201,6 +201,13 @@ def changeactive(request):
     data.save()
     
     return redirect ("/security")
+
+def failhistory(request):
+    data=DOORFAIL.objects.all().order_by('-time').values()
+    context={
+        "data":data
+    }
+    return render(request,'failhistory.html',context)
 # @api_view(['GET'])
 # def static(request):
 #     mail=request.query_params['mail']
