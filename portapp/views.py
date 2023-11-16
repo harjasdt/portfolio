@@ -185,11 +185,11 @@ def newstatus(request):
 @api_view(['GET'])
 def reqactive(request):
     data=ACTIVE.objects.last()
-    context={
-        "active":data.active
-    }
+    # context={
+    #     "active":data.active
+    # }
 
-    return Response(context)
+    return Response(data.active)
 
 def changeactive(request):
     data=ACTIVE.objects.last()
