@@ -148,7 +148,7 @@ def doorstatus(request):
     state = difference.total_seconds()
     print(state)
     active=ACTIVE.objects.last()
-    if(state>10):
+    if(state>5):
         state=0
     else:
         state=1
