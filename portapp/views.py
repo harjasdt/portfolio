@@ -128,9 +128,10 @@ def test(request):
 
 def securehome(request):
     data=DOOR.objects.last()
-    active=ACTIVE.objects.last()
+    
+
     context={"data":data,
-             "active":active}
+             }
 
     return render(request,'safe.html',context)
 
@@ -138,11 +139,26 @@ def securehome(request):
 def doorstatus(request):
     temp=TEMP.objects.last()
     data=DOOR.objects.last()
+    currentDateAndTime = datetime.now()
+    now = str(currentDateAndTime.strftime("%H:%M:%S"))
+    start = datetime.strptime(data.time, "%H:%M:%S") 
+    end = datetime.strptime(now, "%H:%M:%S") 
+    difference = end - start 
+
+    state = difference.total_seconds()
+    print(state)
+    active=ACTIVE.objects.last()
+    if(state>10):
+        state=0
+    else:
+        state=1
     context={
         "d1":data.d1,
         "d2":data.d2,
         "time":data.time,
-        "temp":temp.temp
+        "temp":temp.temp,
+        "state":state,
+        "active":active.active,
     }
 
     return Response(context)
