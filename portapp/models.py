@@ -19,12 +19,12 @@ class HISTORY(models.Model):
 
 class DOOR(models.Model):
     d1=models.IntegerField(default=-1,blank=False)
-    d2=models.IntegerField(default=-1,blank=False)
+    # d2=models.IntegerField(default=-1,blank=False)
     time=models.CharField(max_length=100,blank=False,default=9)
 
 class DOORFAIL(models.Model):
     d1=models.IntegerField(default=-1,blank=False)
-    d2=models.IntegerField(default=-1,blank=False)
+    # d2=models.IntegerField(default=-1,blank=False)
     time=models.CharField(max_length=100,blank=False,default=9)
     
 

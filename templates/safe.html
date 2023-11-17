@@ -118,7 +118,7 @@
               </div>
         </div>
 
-        <div class="col">
+        {% comment %} <div class="col">
               <div class="card" id="card2">
                 <div class="card-body">
                   <h1 class="card-title">Door 2</h1>
@@ -127,7 +127,7 @@
               </div>
    
 
-        </div>
+        </div> {% endcomment %}
 
         
 
@@ -159,7 +159,7 @@
               console.log(response)
               
               document.getElementById("d1").innerHTML=response["d1"];
-              document.getElementById("d2").innerHTML=response["d2"];
+              {% comment %} document.getElementById("d2").innerHTML=response["d2"]; {% endcomment %}
               document.getElementById("time").innerHTML=response["time"];
               document.getElementById("temp").innerHTML=response["temp"];
               switch(response["state"]) {
@@ -176,7 +176,7 @@
                       document.getElementById("deact").classList.add("off");
                       document.getElementById("allact").classList.add("off");
                       document.getElementById("partialact").classList.add("off");
-                      if(response["d1"] == 0 && response["d2"] == 0){
+                      if(response["d1"] == 0){
                         document.getElementById("allact").classList.remove("off");
                       }
                       else{
@@ -216,14 +216,14 @@
                 document.getElementById("card1").classList.remove("open");
               }
 
-              if(response["d2"] == 1){
+              {% comment %} if(response["d2"] == 1){
                 document.getElementById("card2").classList.add("open");
                 document.getElementById("card2").classList.remove("close");
               }
               else if(response["d2"] == 0){
                 document.getElementById("card2").classList.add("close");
                 document.getElementById("card2").classList.remove("open");
-              }
+              } {% endcomment %}
              
 
 

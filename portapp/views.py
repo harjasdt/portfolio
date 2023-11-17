@@ -154,7 +154,7 @@ def doorstatus(request):
         state=1
     context={
         "d1":data.d1,
-        "d2":data.d2,
+        # "d2":data.d2,
         "time":data.time,
         "temp":temp.temp,
         "state":state,
@@ -167,14 +167,14 @@ def doorstatus(request):
 def updatestatus(request):
     # time=request.query_params['time']
     d1=int(request.query_params['d1'])
-    d2=int(request.query_params['d2'])
+    # d2=int(request.query_params['d2'])
     currentDateAndTime = datetime.now()
     time = str(currentDateAndTime.strftime("%H:%M:%S"))
     lastdata=DOOR.objects.last()
 
     lastdata.time=time
     lastdata.d1=d1
-    lastdata.d2=d2
+    # lastdata.d2=d2
 
     lastdata.save()
     # with open('event.csv', 'a') as f:
@@ -186,11 +186,11 @@ def updatestatus(request):
 def newstatus(request):
     # time=request.query_params['time']
     d1=int(request.query_params['d1'])
-    d2=int(request.query_params['d2'])
+    # d2=int(request.query_params['d2'])
     currentDateAndTime = datetime.now()
     time = str(currentDateAndTime.strftime("%H:%M:%S"))
 
-    data=DOORFAIL(time=time,d1=d1,d2=d2)
+    data=DOORFAIL(time=time,d1=d1)
     
 
     data.save()
