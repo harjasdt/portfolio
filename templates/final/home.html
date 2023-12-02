@@ -13,6 +13,11 @@
     <title>Hello, world!</title>
   </head>
   <body>
+    <style>
+      .row{
+        margin-bottom:30px;
+      }
+    </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
         <a class="navbar-brand px-5" href="#">Team-58</a>
@@ -42,6 +47,7 @@
         <div class="col">
           <a href='/predhistory'><button type="button" class="btn btn-success">Predict Crop</button><a>
         </div>
+        
 
 
         <div class="col">
@@ -60,7 +66,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Temperature</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="temp">{{data.temp}}</p></h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">Temperature is <strong>{{data.temp}}  <span>&#176;</span>C</strong></p>
                   
 
                   
@@ -74,7 +80,13 @@
                   <h5 class="card-title">Humidity</h5>
 
                   <h6 class="card-subtitle mb-2 text-muted"><p id="mos">{{data.mos}}</p></h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">Humidity value is <strong>{{data.mos}} - 
+                    {% if data.mos < 500 %} DRY SOIL
+                    {% else %}
+                    WET SOIL
+                    {% endif %}
+                  </strong>
+                  </p>
                   
                 </div>
               </div>
@@ -85,7 +97,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Ph</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="ph">{{data.ph}}</p></h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">pH value is <strong>{{data.ph}}</strong></p>
                   
                 </div>
               </div>
@@ -102,7 +114,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Nitrogen(N)</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="n">{{data.n}}</p></h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">Nitrogen Content is <strong>{{data.n}}</strong></p>
                   
                 </div>
               </div>
@@ -110,9 +122,9 @@
         <div class="col">
             <div class="card" >
                 <div class="card-body">
-                  <h5 class="card-title">P</h5>
+                  <h5 class="card-title">Phosphorus(P)</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="p">{{data.p}}</p></h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">Phosphorus Content is <strong>{{data.p}}</strong></p>
                   
                 </div>
               </div>
@@ -121,15 +133,17 @@
         <div class="col">
             <div class="card" >
                 <div class="card-body">
-                  <h5 class="card-title">K</h5>
+                  <h5 class="card-title">Potassium(K)</h5>
                   <h6  class="card-subtitle mb-2 text-muted"><p id="k">{{data.k}}</p></h6>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text">Potassium Content is <strong>{{data.k}}</strong></p>
                   
                 </div>
               </div>
         </div>
       </div>
     </div>
+
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -157,7 +171,7 @@
               document.getElementById("mos").innerHTML=response["mos"];
               document.getElementById("ph").innerHTML=response["ph"];
               document.getElementById("temp").innerHTML=response["temp"];
-
+              
 
           }, 
           error: function(xhr, status, error) { 
