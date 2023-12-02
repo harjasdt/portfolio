@@ -17,6 +17,9 @@
       .row{
         margin-bottom:30px;
       }
+      p{
+        display:inline;
+      }
     </style>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
@@ -66,7 +69,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Temperature</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="temp">{{data.temp}}</p></h6>
-                  <p class="card-text">Temperature is <strong>{{data.temp}}  <span>&#176;</span>C</strong></p>
+                  <p class="card-text">Temperature is <strong><p id="templ">{{data.temp}}</p>  <span>&#176;</span>C</strong></p>
                   
 
                   
@@ -80,11 +83,8 @@
                   <h5 class="card-title">Humidity</h5>
 
                   <h6 class="card-subtitle mb-2 text-muted"><p id="mos">{{data.mos}}</p></h6>
-                  <p class="card-text">Humidity value is <strong>{{data.mos}} - 
-                    {% if data.mos < 500 %} DRY SOIL
-                    {% else %}
-                    WET SOIL
-                    {% endif %}
+                  <p class="card-text">Humidity value is <strong><p id="mosl">{{data.mos}}</p>
+                
                   </strong>
                   </p>
                   
@@ -97,7 +97,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Ph</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="ph">{{data.ph}}</p></h6>
-                  <p class="card-text">pH value is <strong>{{data.ph}}</strong></p>
+                  <p class="card-text">pH value is <strong><p id="phl">{{data.ph}}</p></strong></p>
                   
                 </div>
               </div>
@@ -114,7 +114,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Nitrogen(N)</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="n">{{data.n}}</p></h6>
-                  <p class="card-text">Nitrogen Content is <strong>{{data.n}}</strong></p>
+                  <p class="card-text">Nitrogen Content is <strong><p id="nl">{{data.n}}</p></strong></p>
                   
                 </div>
               </div>
@@ -124,7 +124,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Phosphorus(P)</h5>
                   <h6 class="card-subtitle mb-2 text-muted"><p id="p">{{data.p}}</p></h6>
-                  <p class="card-text">Phosphorus Content is <strong>{{data.p}}</strong></p>
+                  <p class="card-text">Phosphorus Content is <strong><p id="pl">{{data.p}}</p></strong></p>
                   
                 </div>
               </div>
@@ -135,7 +135,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Potassium(K)</h5>
                   <h6  class="card-subtitle mb-2 text-muted"><p id="k">{{data.k}}</p></h6>
-                  <p class="card-text">Potassium Content is <strong>{{data.k}}</strong></p>
+                  <p class="card-text">Potassium Content is <strong> <p id="kl">{{data.k}}</p></strong></p>
                   
                 </div>
               </div>
@@ -171,6 +171,14 @@
               document.getElementById("mos").innerHTML=response["mos"];
               document.getElementById("ph").innerHTML=response["ph"];
               document.getElementById("temp").innerHTML=response["temp"];
+
+
+              document.getElementById("kl").innerHTML=response["k"];
+              document.getElementById("nl").innerHTML=response["n"];
+              document.getElementById("pl").innerHTML=response["p"];
+              document.getElementById("mosl").innerHTML=response["mos"];
+              document.getElementById("phl").innerHTML=response["ph"];
+              document.getElementById("templ").innerHTML=response["temp"];
               
 
           }, 
