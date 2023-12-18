@@ -10,6 +10,7 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('',views.home,name='home'),
     path('getting/',views.getting,name='getting'),
+    path('models/',views.pest,name='pest'),
     path('clear/',views.clear,name='clear'),
     path('history/',views.history,name='history'),
     path('predhistory/',views.predhistory,name='predhistory'),

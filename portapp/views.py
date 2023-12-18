@@ -79,6 +79,10 @@ def home(request):
 
     return render(request,'final/home.html',context)
 
+def pest(request):
+
+    return render(request,'final/pest.html')
+
 def clear(request):
     QUESTION.objects.all().delete()
 
